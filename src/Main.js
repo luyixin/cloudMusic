@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View, Button } from 'react-native'
 import Header from './components/header'
 
 export default class Main extends Component {
@@ -7,6 +7,7 @@ export default class Main extends Component {
     return (
       <View style={styles.container}>
         <Header/>
+        <Button title="Go to Test" onPress={() => this.props.navigation.navigate('Test')}/>
       </View>
     )
   }
@@ -15,6 +16,6 @@ export default class Main extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#D33A32'
   }
 })
