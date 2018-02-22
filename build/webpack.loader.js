@@ -1,6 +1,7 @@
 /*
-* created by lu.yixin on 2018/2/22
+* created by lu.yixin on 2018/02/22
 */
+
 module.exports = {
   rules: [
     {

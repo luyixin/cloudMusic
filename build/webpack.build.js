@@ -1,3 +1,7 @@
+/*
+* created by lu.yixin on 2018/02/22
+*/
+
 const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')

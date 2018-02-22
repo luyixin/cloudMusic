@@ -1,6 +1,7 @@
 /*
-* created by lu.yixin on 2018/2/22
+* created by lu.yixin on 2018/02/22
 */
+
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
