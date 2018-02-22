@@ -1,57 +1,35 @@
 const webpack = require('webpack')
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const rootPath = path.resolve(__dirname, '..')
+const loader = require('./webpack.loader.js')
+const plugins = require('./webpack.plugins.js')
+
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+loader.rules.push({
+  test: /\.(less|css)$/,
+  use: ['style-loader', 'css-loader', 'less-loader']
+})
+
+plugins.push(new webpack.HotModuleReplacementPlugin())
 
 module.exports = {
   entry: {
-    build: rootPath + '/src/main.js'
+    build: resolve('src') + '/main.js'
   },
   output: {
     filename: '[name].[hash:6].js',
     chunkFilename: '[chunkhash].[hash:6].js',
-    path: rootPath + '/dist'
+    path: resolve('dist')
   },
    resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      '@': resolve('src'),
+    }
   },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['react', 'babel-preset-env']
-          }
-        }
-      }
-    ]
-  },
-  plugins: [
-    new webpack.BannerPlugin('Develop environment created by luyixin <410780496@qq.com> on 2018/02/09'),
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      filename: 'index.html',
-      inject: true
-    }),
-    // 拆分依赖包JS到自己的文件
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module, count) {
-        // node_modules内的任何必需模块都将提取给依赖包
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        )
-      }
-    })
-  ],
+  module: loader,
+  plugins,
   devtool: 'cheap-module-source-map',
   devServer: {
     clientLogLevel: 'none',
