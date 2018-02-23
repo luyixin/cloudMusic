@@ -31,6 +31,7 @@ class Main extends Component {
   test () {
     console.log(1)
   }
+
   render () {
     return (
       <div onClick={this.test}>
