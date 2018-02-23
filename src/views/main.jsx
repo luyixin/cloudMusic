@@ -14,6 +14,7 @@ class Main extends Component {
       showLeftMenu: false
     }
   }
+
   iconClick (id) {
     if (id === this.state.activeHeaderId) return
     if (!id) {
