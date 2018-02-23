@@ -22,7 +22,14 @@ loader.rules.push({
   test: /\.(css|less)$/,
   use: ExtractTextPlugin.extract({
     fallback: 'style-loader',
-    use: ['css-loader', 'less-loader']
+    use: [
+      {
+      loader: 'css-loader',
+      options: {
+        minimize: true
+      }
+    },
+    'less-loader'],
   })
 })
 
@@ -33,6 +40,15 @@ plugins.push(new webpack.optimize.CommonsChunkPlugin({
   name: 'manifest',
   chunks: ['vendor']
 }))
+plugins.push(new webpack.optimize.UglifyJsPlugin({
+  output: {
+    comments: false,  // remove all comments
+  },
+  compress: {
+    warnings: false
+  }
+}))
+plugins.push(new webpack.BannerPlugin('Product created by lu.yixin <410780496@qq.com> on 2018/02/09'))
 
 module.exports = {
   entry: {

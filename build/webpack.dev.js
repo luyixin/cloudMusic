@@ -16,6 +16,7 @@ loader.rules.push({
 })
 
 plugins.push(new webpack.HotModuleReplacementPlugin())
+plugins.push(new webpack.BannerPlugin('Develop environment created by lu.yixin <410780496@qq.com> on 2018/02/09'))
 
 module.exports = {
   entry: {

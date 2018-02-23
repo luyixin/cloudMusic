@@ -11,11 +11,15 @@ function resolve (dir) {
 }
 
 module.exports = [
-  new webpack.BannerPlugin('Develop environment created by luyixin <410780496@qq.com> on 2018/02/09'),
   new HtmlWebpackPlugin({
     template: 'index.html',
     filename: resolve('dist') + '/index.html',
-    inject: true
+    inject: true,
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+    }
   }),
   // 拆分依赖包JS到自己的文件
   new webpack.optimize.CommonsChunkPlugin({
