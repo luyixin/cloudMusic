@@ -10,7 +10,6 @@ class LeftMenu extends Component {
     super(props)
   }
 
-
   render () {
     return (
       <div className={`component-left-menu${this.props.showLeftMenu ? '' : ' hidden'}`}>

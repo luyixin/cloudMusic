@@ -21,7 +21,6 @@ class Header extends Component {
     const iconItem = hearderIcons.map((a, i) => (
       <i className={this.attachClassName(a.id, a.icon)} key={i} aria-hidden="true" onClick={this.props.iconClick.bind(null, a.id)}></i>
     ))
-    // console.log(iconItem)
     return (
       <div className="component-header">
         { iconItem }

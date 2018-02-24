@@ -5,6 +5,7 @@
 import React, { Component } from 'react'
 import Header from '@/components/header'
 import LeftMenu from '@/components/leftMenu'
+import Cover from '@/components/cover'
 
 class Main extends Component {
   constructor () {
@@ -28,15 +29,17 @@ class Main extends Component {
     })
   }
 
-  test () {
-    console.log(1)
+  closeLeftMenu () {
+    this.setState({
+      showLeftMenu: false
+    })
   }
-
   render () {
     return (
-      <div onClick={this.test}>
-        <Header activeHeaderId={this.state.activeHeaderId} iconClick={this.iconClick.bind(this)}/>
-        <LeftMenu showLeftMenu={this.state.showLeftMenu}/>
+      <div>
+        <Header activeHeaderId={this.state.activeHeaderId} iconClick={this.iconClick.bind(this)} />
+        <LeftMenu showLeftMenu={this.state.showLeftMenu} />
+        <Cover show={this.state.showLeftMenu} handleClick={this.closeLeftMenu.bind(this)}/>
         main
       </div>
     )
