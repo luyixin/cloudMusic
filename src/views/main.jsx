@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 import Header from '@/components/header'
 import LeftMenu from '@/components/leftMenu'
 import Cover from '@/components/cover'
+import Music from '@/components/music'
 
 class Main extends Component {
   constructor () {
@@ -40,7 +41,7 @@ class Main extends Component {
         <Header activeHeaderId={this.state.activeHeaderId} iconClick={this.iconClick.bind(this)} />
         <LeftMenu showLeftMenu={this.state.showLeftMenu} />
         <Cover show={this.state.showLeftMenu} handleClick={this.closeLeftMenu.bind(this)}/>
-        main
+        <Music/>
       </div>
     )
   }
